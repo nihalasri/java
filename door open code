@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class dcode{
+    public static void main (String args[])
+    {
+        Scanner scan = new Scanner(System.in);
+        int doorcode = scan.nextInt();
+
+        if (doorcode==1337)
+        System.out.println("now door is opened");
+        else
+        System.out.println("code incorrect");
+    }
+}
