@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class ElectricBill {
+    
+    // Method to calculate the bill based on units consumed
+    public static double calculateBill(int units) {
+        double billAmount = 0;
+        
+        // Defining the rates
+        double rate1 = 1.50; // Rate for first 100 units
+        double rate2 = 2.50; // Rate for next 200 units (101 - 300)
+        double rate3 = 3.50; // Rate for units above 300
+        
+        if (units <= 100) {
+            // For the first 100 units
+            billAmount = units * rate1;
+        } else if (units <= 300) {
+            // For the first 100 units + next 200 units
+            billAmount = (100 * rate1) + (units - 100) * rate2;
+        } else {
+            // For the first 100 + next 200 + remaining units
+            billAmount = (100 * rate1) + (200 * rate2) + (units - 300) * rate3;
+        }
+        
+        return billAmount;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Input: number of units consumed
+        System.out.print("Enter the number of units consumed: ");
+        int units = sc.nextInt();
+        
+        // Calculate the bill
+        double totalBill = calculateBill(units);
+        
+        // Output: the total bill
+        System.out.println("The total electric bill for " + units + " units is: $" + totalBill);
+        
+        sc.close();
+    }
+}
